@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    
+      <table  class="table table-striped table-hover">
+        <caption class="fw-bold">Employee List</caption>
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Birth Date</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Address</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Actions</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of employee">
+            <td>{{ emp.firstname }}</td>
+            <td>{{ emp.lastname }}</td>
+            <td>{{ emp.email }}</td>
+            <td>{{ emp.birthDate | date }}</td>
+            <td>{{ emp.phoneNumber }}</td>
+            <td>{{ emp.address }}</td>
+            <td>{{ emp.salary | currency }}</td>
+            <td>
+                <button type="button" class="btn btn-danger ms-1" (click)="updateEmployee(emp.id)"><i class="fas fa-pen"></i></button>
+                <button type="button" class="btn btn-danger ms-1" (click)="deleteEmployee(emp.id)"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+   
+  </div>
+  

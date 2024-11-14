@@ -1,0 +1,157 @@
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-7 ">
+        <div class="border border-1 p-5 m-5">
+          <h1 class="text-center mb-5">Register a New Employee</h1>
+          <form (ngSubmit)="onSubmit()" #employeeForm="ngForm">
+            <div class="mb-3">
+              <label for="firstname" class="form-label">Firstname</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstname"
+                name="firstname"
+                [(ngModel)]="employee.firstname"
+                required
+                minlength="2"
+                #firstname="ngModel"
+              />
+              <div *ngIf="firstname.invalid && firstname.touched ">
+                <div *ngIf="firstname.errors?.['required']" class="alert alert-danger mt-1">
+                  Firstname is required.
+                </div>
+                <div *ngIf="firstname.errors?.['minlength']" class="alert alert-danger mt-1">
+                  Minimum length is 2 characters.
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="lastname" class="form-label">Lastname</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastname"
+                name="lastname"
+                [(ngModel)]="employee.lastname"
+                required
+                minlength="2"
+                #lastname="ngModel"
+              />
+              <div *ngIf="lastname.invalid && lastname.touched">
+                <div *ngIf="lastname.errors?.['required']" class="alert alert-danger mt-1">
+                  Lastname is required.
+                </div>
+                <div *ngIf="lastname.errors?.['minlength']" class="alert alert-danger mt-1">
+                  Minimum length is 2 characters.
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                [(ngModel)]="employee.email"
+                required
+                email
+                #email="ngModel"
+              />
+              <div *ngIf="email.invalid && email.touched">
+                <div *ngIf="email.errors?.['required']" class="alert alert-danger mt-1">
+                  Email is required.
+                </div>
+                <div *ngIf="email.errors?.['email']" class="alert alert-danger mt-1">
+                  Please enter a valid email.
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="birthDate" class="form-label">Birth Date</label>
+              <input
+                type="date"
+                class="form-control"
+                id="birthDate"
+                name="birthDate"
+                [(ngModel)]="employee.birthDate"
+                required
+                #birthDate="ngModel"
+              />
+              <div *ngIf="birthDate.invalid && birthDate.touched">
+                <div class="alert alert-danger mt-1">Birth date is required.</div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="phoneNumber " class="form-label">Phone Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="phoneNumber"
+                name="phoneNumber"
+                [(ngModel)]="employee.phoneNumber"
+                required
+                pattern="^[0-9]{8}$"
+                #phoneNumber="ngModel"
+              />
+              <div *ngIf="phoneNumber.invalid && phoneNumber.touched">
+                <div *ngIf="phoneNumber.errors?.['required']" class="alert alert-danger mt-1" >
+                  Phone number is required.
+                </div>
+                <div *ngIf="phoneNumber.errors?.['pattern']" class="alert alert-danger mt-1">
+                  Please enter a valid phone number (8 digits).
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                name="address"
+                [(ngModel)]="employee.address"
+                required
+                #address="ngModel"
+              />
+              <div *ngIf="address.invalid && address.touched">
+                <div class="alert alert-danger mt-1">Address is required.</div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="salary" class="form-label">Salary</label>
+              <input
+                type="number"
+                class="form-control"
+                id="salary"
+                name="salary"
+                [(ngModel)]="employee.salary"
+                required
+                min="0"
+                #salary="ngModel"
+              />
+              <div *ngIf="salary.invalid && salary.touched">
+                <div *ngIf="salary.errors?.['required']" class="alert alert-danger mt-1">
+                  Salary is required.
+                </div>
+                <div *ngIf="salary.errors?.['min']" class="alert alert-danger mt-1">
+                  Salary must be a positive number.
+                </div>
+              </div>
+            </div>
+  
+            <button type="submit" class="btn btn-primary justify-content-center d-flex w-100" [disabled]="employeeForm.invalid">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
